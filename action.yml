@@ -1,6 +1,6 @@
-name: 'Android Emulator Runner'
-description: 'Installs, configures and starts an Android Emulator directly on macOS virtual machines.'
-author: 'Reactive Circus'
+name: 'Shaker Runner'
+description: 'Run 'Shaker in a Android Emulator directly on macOS virtual machine.'
+author: 'Star'
 branding:
   icon: 'smartphone'  
   color: 'green'
