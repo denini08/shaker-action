@@ -1,5 +1,5 @@
 name: 'Shaker Runner'
-description: 'Run 'Shaker in a Android Emulator directly on macOS virtual machine.'
+description: 'Run Shaker in a Android Emulator directly on macOS virtual machine.'
 author: 'Star'
 branding:
   icon: 'smartphone'  
