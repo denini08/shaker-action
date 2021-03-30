@@ -90,7 +90,6 @@ async function run() {
     }
     const cmakeVersion = !cmakeInput ? undefined : cmakeInput;
 
-    // custom script to run
     const scriptInput = core.getInput('script', { required: true });
     const scripts = parseScript(scriptInput);
     console.log(`Script:`);
@@ -104,6 +103,30 @@ async function run() {
     // launch an emulator
     await launchEmulator(apiLevel, target, arch, profile, cores, sdcardPathOrSize, avdName, emulatorOptions, disableAnimations);
 
+    /////// SHAKER
+
+    // Adicionar adbRunTestsComand ao arquivo tests.sh
+    const adbRunTestsComand = core.getInput('adb-run-tests', { required: true });
+    console.log(`adb Run Tests Comand: ${adbRunTestsComand}`);
+
+    //Rodar o comando para installar adbRunTestsComand
+    const installComand = core.getInput('install-command', { required: true });
+    console.log(`Installing App and tests\nInstall Command Comand: ${adbRunTestsComand}`);
+    await exec.exec('sh', ['-c', installComand]);
+
+
+
+    // 1. comando para instalar o aplicativo no emulador, ex.: ./gradlew assembleDebugAndroidTest (este é o default)
+    // 2. comando para rodar os testes, por ex.: 
+    // 2. adb shell am instrument -w -r    -e package org.isoron.uhabits -e debug false org.isoron.uhabits.test/androidx.test.runner.AndroidJUnitRunner
+
+    // 3. chamar script sh ou zsh para rodar SHAKER:
+    // https://github.com/AntennaPod/AntennaPod/tree/develop/.github/workflows
+
+
+
+
+    // custom script to run
     // execute the custom script
     try {
       // move to custom working directory if set
