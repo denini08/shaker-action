@@ -90,7 +90,7 @@ async function run() {
     }
     const cmakeVersion = !cmakeInput ? undefined : cmakeInput;
 
-    const scriptInput = core.getInput('script', { required: true });
+    const scriptInput = core.getInput('script');
     const scripts = parseScript(scriptInput);
     console.log(`Script:`);
     scripts.forEach(async (script: string) => {
