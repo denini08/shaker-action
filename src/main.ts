@@ -104,7 +104,7 @@ async function run() {
     await launchEmulator(apiLevel, target, arch, profile, cores, sdcardPathOrSize, avdName, emulatorOptions, disableAnimations);
 
     /////// SHAKER
-    await exec.exec('sh', ['chmod +x', './gradlew']);
+    await exec.exec('sh', ['-c', 'chmod', '+x', './gradlew']);
 
 
     //Rodar o comando para installar o app e os tests, adbRunTestsComand
