@@ -1,0 +1,52 @@
+INSTRUMENTATION_STATUS: class=com.example.android.testing.espresso.fragmentscenario.SampleDialogFragmentTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+com.example.android.testing.espresso.fragmentscenario.SampleDialogFragmentTest:
+INSTRUMENTATION_STATUS: test=launchDialogFragmentEmbeddedToHostActivityAndVerifyUI
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.example.android.testing.espresso.fragmentscenario.SampleDialogFragmentTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=launchDialogFragmentEmbeddedToHostActivityAndVerifyUI
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.example.android.testing.espresso.fragmentscenario.SampleDialogFragmentTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=launchDialogFragmentAndVerifyUI
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.example.android.testing.espresso.fragmentscenario.SampleDialogFragmentTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=launchDialogFragmentAndVerifyUI
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.example.android.testing.espresso.fragmentscenario.SampleFragmentTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+com.example.android.testing.espresso.fragmentscenario.SampleFragmentTest:
+INSTRUMENTATION_STATUS: test=launchFragmentAndVerifyUI
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.example.android.testing.espresso.fragmentscenario.SampleFragmentTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=launchFragmentAndVerifyUI
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 3.574
+
+OK (3 tests)
+
+
+INSTRUMENTATION_CODE: -1

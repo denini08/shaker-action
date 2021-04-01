@@ -1,0 +1,2 @@
+#!/bin/bash
+adb shell am instrument -w -r    -e package com.example.android.testing.espresso.fragmentscenario -e debug false com.example.android.testing.espresso.FragmentScenarioSample.test/androidx.test.runner.AndroidJUnitRunner

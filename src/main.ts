@@ -104,21 +104,25 @@ async function run() {
     await launchEmulator(apiLevel, target, arch, profile, cores, sdcardPathOrSize, avdName, emulatorOptions, disableAnimations);
 
     /////// SHAKER
+    await exec.exec('sh', ['chmod +x', './gradlew']);
 
-    // Adicionar adbRunTestsComand ao arquivo tests.sh
+
+    //Rodar o comando para installar o app e os tests, adbRunTestsComand
+    const installComand = core.getInput('install-command', { required: true });
+    console.log(`Installing App and tests\nInstall Command Comand: ${installComand}`);
+    await exec.exec('sh', ['-c', installComand]);
+    console.log('Terminou de instalar os apps e os tests')
+
+    // comando para rodar os testes: 
     const adbRunTestsComand = core.getInput('adb-run-tests', { required: true });
     console.log(`adb Run Tests Comand: ${adbRunTestsComand}`);
+    process.chdir('standalone');
+    await exec.exec('sh', ['echo', adbRunTestsComand, '>>', 'tests.sh']);
+    await exec.exec('sh', ['chmod +x', 'exec.sh', 'tests.sh']);
 
-    //Rodar o comando para installar adbRunTestsComand
-    const installComand = core.getInput('install-command', { required: true });
-    console.log(`Installing App and tests\nInstall Command Comand: ${adbRunTestsComand}`);
-    await exec.exec('sh', ['-c', installComand]);
-
-
-
-    // 1. comando para instalar o aplicativo no emulador, ex.: ./gradlew assembleDebugAndroidTest (este é o default)
-    // 2. comando para rodar os testes, por ex.: 
-    // 2. adb shell am instrument -w -r    -e package org.isoron.uhabits -e debug false org.isoron.uhabits.test/androidx.test.runner.AndroidJUnitRunner
+    console.log("!!! RUNNING SHAKER by js")
+    await exec.exec('sh', ['python3', 'exec.py', '3', 'name'])
+    console.log("DONE SHAKER by js")
 
     // 3. chamar script sh ou zsh para rodar SHAKER:
     // https://github.com/AntennaPod/AntennaPod/tree/develop/.github/workflows
@@ -128,6 +132,7 @@ async function run() {
 
     // custom script to run
     // execute the custom script
+    process.chdir('../');
     try {
       // move to custom working directory if set
       if (workingDirectory) {
