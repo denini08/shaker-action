@@ -104,6 +104,7 @@ async function run() {
     await launchEmulator(apiLevel, target, arch, profile, cores, sdcardPathOrSize, avdName, emulatorOptions, disableAnimations);
 
     /////// SHAKER
+    await exec.exec('sh', ['-c', 'ls']);
     await exec.exec('sh', ['-c', 'chmod', '+x', './gradlew']);
 
 
