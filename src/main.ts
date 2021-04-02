@@ -17,6 +17,9 @@ async function run() {
         throw new Error('Unsupported virtual machine: please use either macos or ubuntu VM.');
       }
     }
+    /////// SHAKER
+    await exec.exec('sh', ['-c', 'ls']);
+    await exec.exec('sh', ['-c', 'chmod', '+x', 'gradlew']);
 
     // API level of the platform and system image
     const apiLevelInput = core.getInput('api-level', { required: true });
@@ -103,9 +106,7 @@ async function run() {
     // launch an emulator
     await launchEmulator(apiLevel, target, arch, profile, cores, sdcardPathOrSize, avdName, emulatorOptions, disableAnimations);
 
-    /////// SHAKER
-    await exec.exec('sh', ['-c', 'ls']);
-    await exec.exec('sh', ['-c', 'chmod', '+x', './gradlew']);
+
 
 
     //Rodar o comando para installar o app e os tests, adbRunTestsComand
@@ -118,6 +119,7 @@ async function run() {
     const adbRunTestsComand = core.getInput('adb-run-tests', { required: true });
     console.log(`adb Run Tests Comand: ${adbRunTestsComand}`);
     process.chdir('standalone');
+    await exec.exec('sh', ['-c', 'ls']);
     await exec.exec('sh', ['echo', adbRunTestsComand, '>>', 'tests.sh']);
     await exec.exec('sh', ['chmod +x', 'exec.sh', 'tests.sh']);
 
