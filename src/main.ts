@@ -17,7 +17,8 @@ async function run() {
         throw new Error('Unsupported virtual machine: please use either macos or ubuntu VM.');
       }
     }
-    await exec.exec('sh', ['-c', 'ls -a']);
+    console.log("AQUI")
+    await exec.exec('sh', ['-c', 'find .github']);
 
     // API level of the platform and system image
     const apiLevelInput = core.getInput('api-level', { required: true });
@@ -117,11 +118,11 @@ async function run() {
     const adbRunTestsComand = core.getInput('adb-run-tests', { required: true });
     console.log(`adb Run Tests Comand: ${adbRunTestsComand}`);
     await exec.exec('sh', ['-c', 'ls']);
-    await exec.exec('sh', ['echo', adbRunTestsComand, '>>', 'tests.sh']);
+    await exec.exec('sh', ['-c', 'echo', adbRunTestsComand, '>>', 'tests.sh']);
     //await exec.exec('sh', ['chmod +x', 'exec.sh', 'tests.sh']);
 
     console.log("!!! RUNNING SHAKER by js")
-    await exec.exec('sh', ['python3', 'exec.py', '3', 'name'])
+    await exec.exec('sh', ['-c', 'python3', 'exec.py', '3', 'name'])
     console.log("DONE SHAKER by js")
 
     // 3. chamar script sh ou zsh para rodar SHAKER:
@@ -156,3 +157,5 @@ async function run() {
 }
 
 run();
+
+// git update-index --chmod=+x gradlew
