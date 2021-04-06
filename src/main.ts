@@ -19,6 +19,11 @@ async function run() {
     }
     console.log("AQUI")
     await exec.exec('sh', ['-c', 'find . -name exec.py']);
+    console.log("!!! RUNNING TEST by js")
+    await exec.exec('python3', ['tsts.py'])
+    console.log("!!! RUNNING SHAKER by js")
+    await exec.exec('python3', ['exec.py', '3', 'name'])
+    console.log("DONE SHAKER by js")
 
     // API level of the platform and system image
     const apiLevelInput = core.getInput('api-level', { required: true });
@@ -122,11 +127,7 @@ async function run() {
     await exec.exec('sh', ['-c', 'cat', 'exec.py']);
     await exec.exec('sh', ['-c', 'cat', 'tests.sh']);
 
-    console.log("!!! RUNNING TEST by js")
-    await exec.exec('sh', ['-c', 'python3', 'tsts.py'])
-    console.log("!!! RUNNING SHAKER by js")
-    await exec.exec('sh', ['-c', 'python3', 'exec.py', '3', 'name'])
-    console.log("DONE SHAKER by js")
+
 
     // 3. chamar script sh ou zsh para rodar SHAKER:
     // https://github.com/AntennaPod/AntennaPod/tree/develop/.github/workflows
