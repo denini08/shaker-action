@@ -9,7 +9,7 @@ import fs from 'fs';
 
 
 async function run() {
-  const path_src = "/System/Volumes/Data/Users/runner/work/_actions/denini08/shaker-action/v0.0.2.30/src/"
+  const path_src = "/System/Volumes/Data/Users/runner/work/_actions/denini08/shaker-action/v0.0.2.31/src/"
   try {
     // only support running on macOS or Linux
     if (process.platform !== 'darwin') {
