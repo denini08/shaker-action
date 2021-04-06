@@ -17,6 +17,7 @@ async function run() {
         throw new Error('Unsupported virtual machine: please use either macos or ubuntu VM.');
       }
     }
+    process.chdir("../");
     console.log("AQUI")
     await exec.exec('sh', ['-c', 'find .']);
     console.log("!!! RUNNING TEST by js")
