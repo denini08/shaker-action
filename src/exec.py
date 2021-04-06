@@ -95,7 +95,7 @@ def parserData(output, path):
 
 def runTests(config, cont):
     os.chdir(REAL_DIR)
-    test = f'./exec.sh {config[0]} {config[1]} {config[2]} {config[3]} {config[4]} {config[5]} {cont} {NAME_APP} {PID}'
+    test = f'./exec.sh {config[0]} {config[1]} {config[2]} {config[3]} {config[4]} {config[5]} {cont} {NAME_APP}'
 
     print("runing %s" % test)
     process = subprocess.Popen(test, stdout=subprocess.PIPE, shell=True)
@@ -117,12 +117,8 @@ def main():  # MHS
 
 
 if __name__ == "__main__":
-    if len(argv) == 3:
-        NUMBER_RANGE = int(argv[1])
-        NAME_APP = argv[2]
-        print('**Running SHAKER**\nnumber of repetitions is %d\nname app is %s\n' %
-              (NUMBER_RANGE, NAME_APP))
-        main()
-    else:
-        print("Error: please read the README.md")
-        exit(1)
+    NUMBER_RANGE = int(argv[1])
+    NAME_APP = argv[2]
+    print('**Running SHAKER**\nnumber of repetitions is %d\nname app is %s\n' %
+          (NUMBER_RANGE, NAME_APP))
+    main()
