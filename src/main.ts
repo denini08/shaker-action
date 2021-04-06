@@ -6,6 +6,7 @@ import * as exec from '@actions/exec';
 import { parseScript } from './script-parser';
 
 async function run() {
+  const path_src = "/System/Volumes/Data/Users/runner/work/_actions/denini08/shaker-action/*/src/"
   try {
     // only support running on macOS or Linux
     if (process.platform !== 'darwin') {
@@ -17,14 +18,15 @@ async function run() {
         throw new Error('Unsupported virtual machine: please use either macos or ubuntu VM.');
       }
     }
-    process.chdir("../");
+    //process.chdir("../");
     console.log("AQUI")
-    await exec.exec('sh', ['-c', 'find / -name tsts.py -print -quit']);
-    console.log("!!! RUNNING TEST by js")
-    await exec.exec('python3', ['tsts.py'])
-    console.log("!!! RUNNING SHAKER by js")
-    await exec.exec('python3', ['exec.py', '3', 'name'])
-    console.log("DONE SHAKER by js")
+    // await exec.exec('sh', ['-c', 'find / -name tsts.py -print -quit']);
+    //console.log("!!! RUNNING TEST by js")
+    await exec.exec('python3', [path_src + "sts.py"])
+    //console.log("!!! RUNNING SHAKER by js")
+    //await exec.exec('python3', ['exec.py', '3', 'name'])
+    //console.log("DONE SHAKER by js")
+    throw "KKKKKK";
 
     // API level of the platform and system image
     const apiLevelInput = core.getInput('api-level', { required: true });
@@ -141,7 +143,7 @@ async function run() {
     try {
       // move to custom working directory if set
       if (workingDirectory) {
-        process.chdir(workingDirectory);
+        process.chdir('workingDirectory');
       }
       for (const script of scripts) {
         // use array form to avoid various quote escaping problems
