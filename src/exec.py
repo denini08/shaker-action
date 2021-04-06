@@ -117,7 +117,7 @@ def main():  # MHS
 
 
 if __name__ == "__main__":
-    if len(argv) == 4:
+    if len(argv) == 3:
         NUMBER_RANGE = int(argv[1])
         NAME_APP = argv[2]
         print('**Running SHAKER**\nnumber of repetitions is %d\nname app is %s\n' %
