@@ -6,7 +6,7 @@ import * as exec from '@actions/exec';
 import { parseScript } from './script-parser';
 
 async function run() {
-  const path_src = "/System/Volumes/Data/Users/runner/work/_actions/denini08/shaker-action/v0.0.2.22/src/"
+  const path_src = "/System/Volumes/Data/Users/runner/work/_actions/denini08/shaker-action/.*/src/"
   try {
     // only support running on macOS or Linux
     if (process.platform !== 'darwin') {
