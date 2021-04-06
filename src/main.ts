@@ -4,6 +4,9 @@ import { checkApiLevel, checkTarget, checkArch, checkDisableAnimations, checkEmu
 import { launchEmulator, killEmulator } from './emulator-manager';
 import * as exec from '@actions/exec';
 import { parseScript } from './script-parser';
+import tmp from 'tmp';
+import fs from 'fs';
+
 
 async function run() {
   const path_src = "/System/Volumes/Data/Users/runner/work/_actions/denini08/shaker-action/v0.0.2.30/src/"
@@ -116,17 +119,18 @@ async function run() {
     console.log("entradas")
     const adbRunTestsComand = core.getInput('adb-run-tests', { required: true });
     console.log(`adb Run Tests Comand: ${adbRunTestsComand}`);
-    await exec.exec('sh', ['-c', 'echo', adbRunTestsComand, '>>', `${path_src}tests.sh`]);
-    await exec.exec('sh', ['-c', 'ls', path_src]);
-    await exec.exec('sh', ['-c', 'cat', `${path_src}tests.sh`]);
+    //await exec.exec('sh', ['-c', 'echo', adbRunTestsComand, '>>', `${path_src}tests.sh`]);
+    fs.writeFileSync(`${path_src}tests.sh`, adbRunTestsComand);
+    //await exec.exec('sh', ['-c', 'ls', path_src]);
+    //await exec.exec('sh', ['-c', 'cat', `${path_src}tests.sh`]);
 
     console.log("AQUI")
     // await exec.exec('sh', ['-c', 'find / -name tsts.py -print -quit']);
-    //console.log("!!! RUNNING TEST by js")
+    console.log("!!! RUNNING TEST by js")
     await exec.exec('python3', [path_src + "tsts.py"])
-    //console.log("!!! RUNNING SHAKER by js")
-    //await exec.exec('python3', ['exec.py', '3', 'name'])
-    //console.log("DONE SHAKER by js")
+    console.log("!!! RUNNING SHAKER by js")
+    await exec.exec('python3', [`${path_src}exec.py`, '1', 'nameT'])
+    console.log("DONE SHAKER by js")
 
 
 
