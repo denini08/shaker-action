@@ -22,7 +22,7 @@ async function run() {
     console.log("AQUI")
     // await exec.exec('sh', ['-c', 'find / -name tsts.py -print -quit']);
     //console.log("!!! RUNNING TEST by js")
-    await exec.exec('python3', [path_src + "sts.py"])
+    await exec.exec('python3', [path_src + "tsts.py"])
     //console.log("!!! RUNNING SHAKER by js")
     //await exec.exec('python3', ['exec.py', '3', 'name'])
     //console.log("DONE SHAKER by js")
@@ -143,7 +143,7 @@ async function run() {
     try {
       // move to custom working directory if set
       if (workingDirectory) {
-        process.chdir('workingDirectory');
+        process.chdir("workingDirectory");
       }
       for (const script of scripts) {
         // use array form to avoid various quote escaping problems
