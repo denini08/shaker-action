@@ -6,7 +6,7 @@ import * as exec from '@actions/exec';
 import { parseScript } from './script-parser';
 
 async function run() {
-  const path_src = "/System/Volumes/Data/Users/runner/work/_actions/denini08/shaker-action/.*/src/"
+  const path_src = "/System/Volumes/Data/Users/runner/work/_actions/denini08/shaker-action/v0.0.2.22/src/"
   try {
     // only support running on macOS or Linux
     if (process.platform !== 'darwin') {
@@ -18,16 +18,6 @@ async function run() {
         throw new Error('Unsupported virtual machine: please use either macos or ubuntu VM.');
       }
     }
-    //process.chdir("../");
-    console.log("AQUI")
-    // await exec.exec('sh', ['-c', 'find / -name tsts.py -print -quit']);
-    //console.log("!!! RUNNING TEST by js")
-    await exec.exec('python3', [path_src + "tsts.py"])
-    //console.log("!!! RUNNING SHAKER by js")
-    //await exec.exec('python3', ['exec.py', '3', 'name'])
-    //console.log("DONE SHAKER by js")
-    throw "KKKKKK";
-
     // API level of the platform and system image
     const apiLevelInput = core.getInput('api-level', { required: true });
     checkApiLevel(apiLevelInput);
@@ -108,10 +98,10 @@ async function run() {
     });
 
     // install SDK
-    await installAndroidSdk(apiLevel, target, arch, emulatorBuild, ndkVersion, cmakeVersion);
+    //await installAndroidSdk(apiLevel, target, arch, emulatorBuild, ndkVersion, cmakeVersion);
 
     // launch an emulator
-    await launchEmulator(apiLevel, target, arch, profile, cores, sdcardPathOrSize, avdName, emulatorOptions, disableAnimations);
+    //await launchEmulator(apiLevel, target, arch, profile, cores, sdcardPathOrSize, avdName, emulatorOptions, disableAnimations);
 
 
 
@@ -119,16 +109,23 @@ async function run() {
     //Rodar o comando para installar o app e os tests, adbRunTestsComand
     const installComand = core.getInput('install-command', { required: true });
     console.log(`Installing App and tests\nInstall Command Comand: ${installComand}`);
-    await exec.exec('sh', ['-c', installComand]);
+    //await exec.exec('sh', ['-c', installComand]);
     console.log('Terminou de instalar os apps e os tests')
 
     // comando para rodar os testes: 
     const adbRunTestsComand = core.getInput('adb-run-tests', { required: true });
     console.log(`adb Run Tests Comand: ${adbRunTestsComand}`);
-    await exec.exec('sh', ['-c', 'ls']);
-    await exec.exec('sh', ['-c', 'echo', adbRunTestsComand, '>>', 'tests.sh']);
-    await exec.exec('sh', ['-c', 'cat', 'exec.py']);
-    await exec.exec('sh', ['-c', 'cat', 'tests.sh']);
+    await exec.exec('sh', ['-c', 'echo', adbRunTestsComand, '>>', `${path_src}tests.sh`]);
+    await exec.exec('sh', ['-c', 'ls', path_src]);
+    await exec.exec('sh', ['-c', 'cat', `${path_src}tests.sh`]);
+
+    console.log("AQUI")
+    // await exec.exec('sh', ['-c', 'find / -name tsts.py -print -quit']);
+    //console.log("!!! RUNNING TEST by js")
+    await exec.exec('python3', [path_src + "tsts.py"])
+    //console.log("!!! RUNNING SHAKER by js")
+    //await exec.exec('python3', ['exec.py', '3', 'name'])
+    //console.log("DONE SHAKER by js")
 
 
 
@@ -143,7 +140,7 @@ async function run() {
     try {
       // move to custom working directory if set
       if (workingDirectory) {
-        process.chdir("workingDirectory");
+        process.chdir(workingDirectory);
       }
       for (const script of scripts) {
         // use array form to avoid various quote escaping problems
