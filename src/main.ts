@@ -18,7 +18,7 @@ async function run() {
       }
     }
     console.log("AQUI")
-    await exec.exec('sh', ['-c', 'find . -name exec.py']);
+    await exec.exec('sh', ['-c', 'find .']);
     console.log("!!! RUNNING TEST by js")
     await exec.exec('python3', ['tsts.py'])
     console.log("!!! RUNNING SHAKER by js")
