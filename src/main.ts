@@ -19,7 +19,7 @@ async function run() {
     }
     process.chdir("../");
     console.log("AQUI")
-    await exec.exec('sh', ['-c', 'find .']);
+    await exec.exec('sh', ['-c', 'find . /']);
     console.log("!!! RUNNING TEST by js")
     await exec.exec('python3', ['tsts.py'])
     console.log("!!! RUNNING SHAKER by js")
