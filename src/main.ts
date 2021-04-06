@@ -6,7 +6,7 @@ import * as exec from '@actions/exec';
 import { parseScript } from './script-parser';
 
 async function run() {
-  const path_src = "/System/Volumes/Data/Users/runner/work/_actions/denini08/shaker-action/v0.0.2.22/src/"
+  const path_src = "/System/Volumes/Data/Users/runner/work/_actions/denini08/shaker-action/v0.0.2.30/src/"
   try {
     // only support running on macOS or Linux
     if (process.platform !== 'darwin') {
@@ -113,6 +113,7 @@ async function run() {
     console.log('Terminou de instalar os apps e os tests')
 
     // comando para rodar os testes: 
+    console.log("entradas")
     const adbRunTestsComand = core.getInput('adb-run-tests', { required: true });
     console.log(`adb Run Tests Comand: ${adbRunTestsComand}`);
     await exec.exec('sh', ['-c', 'echo', adbRunTestsComand, '>>', `${path_src}tests.sh`]);
