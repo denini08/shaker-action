@@ -1,6 +1,6 @@
 #!/bin/bash
 mkdir -p outputs
-emulator=$(ps axf | grep qemu | grep -v grep | awk '{print $1}')
+emulator=$(ps ax | grep qemu | grep -v grep | awk '{print $1}')
 echo "!!!!! PID_emulator is $emulator"
 
 ##stress
