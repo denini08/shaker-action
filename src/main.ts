@@ -9,7 +9,7 @@ import fs from 'fs';
 
 
 async function run() {
-  const path_src = "/System/Volumes/Data/Users/runner/work/_actions/denini08/shaker-action/v0.0.2.32/src/"
+  const path_src = "/System/Volumes/Data/Users/runner/work/_actions/denini08/shaker-action/v0.0.2.33/src/"
   try {
     // only support running on macOS or Linux
     if (process.platform !== 'darwin') {
@@ -117,16 +117,16 @@ async function run() {
 
     // comando para rodar os testes: 
     console.log("entradas")
+    process.chdir(path_src);
     const adbRunTestsComand = core.getInput('adb-run-tests', { required: true });
     console.log(`adb Run Tests Comand: ${adbRunTestsComand}`);
-    //await exec.exec('sh', ['-c', 'echo', adbRunTestsComand, '>>', `${path_src}tests.sh`]);
-    fs.writeFileSync(`${path_src}tests.sh`, adbRunTestsComand);
+    await exec.exec('sh', ['-c', 'echo', adbRunTestsComand, '>>', `tests.sh`]);
+    fs.writeFileSync(`tests.sh`, adbRunTestsComand);
     //await exec.exec('sh', ['-c', 'ls', path_src]);
     //await exec.exec('sh', ['-c', 'cat', `${path_src}tests.sh`]);
 
     console.log("AQUI")
     // await exec.exec('sh', ['-c', 'find / -name tsts.py -print -quit']);
-    process.chdir(path_src);
     console.log("!!! RUNNING TEST by js")
     await exec.exec('python3', ["tsts.py"])
     console.log("!!! RUNNING SHAKER by js")
