@@ -126,10 +126,11 @@ async function run() {
 
     console.log("AQUI")
     // await exec.exec('sh', ['-c', 'find / -name tsts.py -print -quit']);
+    process.chdir(path_src);
     console.log("!!! RUNNING TEST by js")
-    await exec.exec('python3', [path_src + "tsts.py"])
+    await exec.exec('python3', ["tsts.py"])
     console.log("!!! RUNNING SHAKER by js")
-    await exec.exec('python3', [`${path_src}exec.py`, '1', 'nameT'])
+    await exec.exec('python3', ['exec.py', '1', 'nameT'])
     console.log("DONE SHAKER by js")
 
 
