@@ -95,7 +95,7 @@ def parserData(output, path):
 
 def runTests(config, cont):
     os.chdir(REAL_DIR)
-    test = f'./exec.sh {config[0]} {config[1]} {config[2]} {config[3]} {config[4]} {config[5]} {cont} {NAME_APP}'
+    test = f'bash ./exec.sh {config[0]} {config[1]} {config[2]} {config[3]} {config[4]} {config[5]} {cont} {NAME_APP}'
 
     print("runing %s" % test)
     process = subprocess.Popen(test, stdout=subprocess.PIPE, shell=True)
